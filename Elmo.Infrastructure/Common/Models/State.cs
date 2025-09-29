@@ -11,8 +11,6 @@ namespace Elmo.Infrastructure.Common.Models
     {
         #region Properties
 
-
-
         /// <summary>
         /// Is not valid ?
         /// </summary>
@@ -46,11 +44,6 @@ namespace Elmo.Infrastructure.Common.Models
         /// </summary>
         [JsonIgnore]
         public Dictionary<string, List<string>> ErrorsDictionary { get; set; }
-        /// <summary>
-        /// Messages
-        /// </summary>
-        [JsonIgnore]
-        public List<string> Messages { get; set; }
 
         #endregion Properties
 
@@ -62,7 +55,6 @@ namespace Elmo.Infrastructure.Common.Models
         public State()
         {
             Errors = new List<string>();
-            Messages = new List<string>();
             ErrorsDictionary = new Dictionary<string, List<string>>();
         }
 
@@ -73,7 +65,6 @@ namespace Elmo.Infrastructure.Common.Models
         public State(Dictionary<string, List<string>> errorsDictionary)
         {
             Errors = errorsDictionary.Values.SelectMany(x => x).ToList();
-            Messages = new List<string>();
             ErrorsDictionary = errorsDictionary;
         }
 
@@ -133,14 +124,6 @@ namespace Elmo.Infrastructure.Common.Models
                 ErrorsDictionary.Add(key, new List<string>() { err });
             }
         }
-        /// <summary>
-        /// Add message
-        /// </summary>
-        /// <param name="msg"></param>
-        public void AddMessage(string msg)
-        {
-            Messages.Add(msg);
-        }
 
         #endregion Exception methods
 
@@ -171,14 +154,6 @@ namespace Elmo.Infrastructure.Common.Models
             return string.Join("\n", Errors);
         }
 
-        /// <summary>
-        /// Gets messages
-        /// </summary>
-        /// <returns></returns>
-        public string GetMessages()
-        {
-            return string.Join("\n", Messages);
-        }
         #endregion
     }
 
@@ -225,11 +200,6 @@ namespace Elmo.Infrastructure.Common.Models
         [JsonIgnore]
         public Dictionary<string, List<string>> ErrorsDictionary { get; set; } = new Dictionary<string, List<string>>();
 
-        /// <summary>
-        /// Messages
-        /// </summary>
-        [JsonIgnore]
-        public List<string> Messages { get; set; } = new List<string>();
 
         #endregion Properties
 
@@ -304,14 +274,6 @@ namespace Elmo.Infrastructure.Common.Models
             }
         }
 
-        /// <summary>
-        /// Add message
-        /// </summary>
-        /// <param name="msg"></param>
-        public void AddMessage(string msg)
-        {
-            Messages.Add(msg);
-        }
 
         #endregion Exception methods
 
@@ -342,14 +304,6 @@ namespace Elmo.Infrastructure.Common.Models
             return string.Join("\n", Errors.Distinct());
         }
 
-        /// <summary>
-        /// Gets messages
-        /// </summary>
-        /// <returns></returns>
-        public string GetMessages()
-        {
-            return string.Join("\n", Messages);
-        }
         #endregion
     }
 }

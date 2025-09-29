@@ -1,7 +1,12 @@
-﻿using Elmo.Application.Services.Exercise1;
+﻿using Elmo.Application.Mapper;
+using Elmo.Application.Services.Exercise1;
+using Elmo.Application.Services.Exercise2;
+using Elmo.Infrastructure.Context;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc.Controllers;
+using Microsoft.EntityFrameworkCore;
+using Microsoft.Extensions.DependencyInjection;
 using Microsoft.OpenApi.Models;
 using System.Reflection;
 
@@ -25,14 +30,23 @@ namespace Elmo.WebApi.Extensions
 
 
             //inicjalizer
-            //services.AddScoped<IDatabaseInitalizer, DatabaseInitalizer>();
+            services.AddScoped<IElmoDbInitializer, ElmoDbInitializer>();
 
 
             //serwisy
             services.AddScoped<IExercise1Service, Exercise1Service>();
+            services.AddScoped<IExercise2Service, Exercise2Service>();
 
 
-            services.AddDirectoryBrowser();
+            //automapper:
+            services.AddAutoMapper(cfg => {
+                cfg.AllowNullCollections = false;
+                cfg.AllowNullDestinationValues = true;
+            }, AppDomain.CurrentDomain.GetAssemblies());
+
+
+
+
 
         }
 
@@ -41,13 +55,12 @@ namespace Elmo.WebApi.Extensions
         /// Połączenia z bazą
         /// </summary>
         /// <param name="services"></param>
-        //public static void AddContext(this IServiceCollection services, ConfigurationManager configuration)
-        //{
-        //    //postgresql
-        //    services.AddDbContext<ApplicationDbContext>(options =>
-        //    options.UseSqlServer(configuration.GetConnectionString("DefaultConnection")));
+        public static void AddContext(this IServiceCollection services, ConfigurationManager configuration)
+        {
+            services.AddDbContext<ElmoDbContext>(options =>
+            options.UseSqlServer(configuration.GetConnectionString("DefaultConnection")));
 
-        //}
+        }
 
 
     }

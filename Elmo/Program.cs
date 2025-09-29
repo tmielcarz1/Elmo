@@ -1,3 +1,4 @@
+using Elmo.Infrastructure.Context;
 using Elmo.WebApi.Extensions;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
@@ -13,6 +14,7 @@ builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();
 
 builder.Services.RegisterServices(configuration);
+builder.Services.AddContext(configuration);
 
 var app = builder.Build();
 
@@ -21,6 +23,7 @@ if (app.Environment.IsDevelopment())
 {
     app.UseSwagger();
     app.UseSwaggerUI();
+    app.InitalizeDatabase<ElmoDbInitializer>(); //inicjalizer
 }
 
 //app.UseHttpsRedirection();

@@ -26,12 +26,11 @@ namespace Elmo.WebApi.Controllers
         public IActionResult GetSuperiorRowOfEmployee(GetSuperiorRowOfEmployeeRequest request)
         {
             var result = _exercise1Service.GetSuperiorRowOfEmployee(request.EmployeeId, request.SuperiorId);
-            if (result.IsNotValid)
-                switch (result.StatusCode)
-                {
-                    case Infrastructure.Common.Models.StatusCode.NotFound: return NotFound(result);
-                    case Infrastructure.Common.Models.StatusCode.BadRequest: return BadRequest(result);
-                }
+            switch (result.StatusCode)
+            {
+                case Infrastructure.Common.Models.StatusCode.NotFound: return NotFound(result);
+                case Infrastructure.Common.Models.StatusCode.BadRequest: return BadRequest(result);
+            }
 
             return Ok(result);
         }

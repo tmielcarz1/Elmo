@@ -58,7 +58,10 @@ namespace Elmo.Application.Services.Exercise1
                 {
                     state.AddError($"Nie znaleziono poziomów przełożonego dla employeeId {employeeId} i superiorId {superiorId}.");
                     state.StatusCode = StatusCode.NotFound;
+                    return state;
                 }
+
+                state.StateObject = rows;
             }
             catch (Exception ex)
             {

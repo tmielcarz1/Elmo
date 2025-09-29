@@ -1,0 +1,30 @@
+﻿using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using System.Text.Json.Serialization;
+using System.Threading.Tasks;
+
+namespace Elmo.Application.Models.Exercise2
+{
+    public class GetEmployeesWithGrantedDaysThisYearResponse
+    {
+        [JsonPropertyName("employees")]
+        public List<GetEmployeesWithGrantedDaysThisYearEmployee>? Employees { get; set; }
+
+    }
+
+    public class GetEmployeesWithGrantedDaysThisYearEmployee
+    {
+        [JsonPropertyName("employeeId")]
+        public int Id { get; set; }
+
+        [JsonPropertyName("employeeName")]
+        public string? Name { get; set; }
+
+        [JsonPropertyName("usedDays")]
+        public int? UsedDays { get; set; }
+    }
+
+
+}
