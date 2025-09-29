@@ -1,6 +1,7 @@
 ﻿using Elmo.Application.Mapper;
 using Elmo.Application.Services.Exercise1;
 using Elmo.Application.Services.Exercise2;
+using Elmo.Application.Services.Exercise3;
 using Elmo.Infrastructure.Context;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Identity;
@@ -36,6 +37,8 @@ namespace Elmo.WebApi.Extensions
             //serwisy
             services.AddScoped<IExercise1Service, Exercise1Service>();
             services.AddScoped<IExercise2Service, Exercise2Service>();
+            services.AddScoped<IExercise3Service, Exercise3Service>();
+            //services.AddScoped<IExercise4Repository, Exercise4Repository>();
 
 
             //automapper:
