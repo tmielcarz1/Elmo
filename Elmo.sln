@@ -1,0 +1,55 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 17
+VisualStudioVersion = 17.14.36518.9 d17.14
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Elmo.WebApi", "Elmo\Elmo.WebApi.csproj", "{92C81B6B-9003-435A-9803-E319D289B756}"
+	ProjectSection(ProjectDependencies) = postProject
+		{40665AB6-07DB-471A-9F8D-6DA96EA92780} = {40665AB6-07DB-471A-9F8D-6DA96EA92780}
+		{AE1BC520-F49E-4DD0-AF13-3DDF458A58A5} = {AE1BC520-F49E-4DD0-AF13-3DDF458A58A5}
+		{D005488E-5F0A-41BB-A87B-1DACB524F7F5} = {D005488E-5F0A-41BB-A87B-1DACB524F7F5}
+	EndProjectSection
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Elmo.Infrastructure", "Elmo.Infrastructure\Elmo.Infrastructure.csproj", "{D005488E-5F0A-41BB-A87B-1DACB524F7F5}"
+	ProjectSection(ProjectDependencies) = postProject
+		{40665AB6-07DB-471A-9F8D-6DA96EA92780} = {40665AB6-07DB-471A-9F8D-6DA96EA92780}
+	EndProjectSection
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Elmo.Domain", "Elmo.Domain\Elmo.Domain.csproj", "{40665AB6-07DB-471A-9F8D-6DA96EA92780}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Elmo.Application", "Elmo.Application\Elmo.Application.csproj", "{AE1BC520-F49E-4DD0-AF13-3DDF458A58A5}"
+	ProjectSection(ProjectDependencies) = postProject
+		{40665AB6-07DB-471A-9F8D-6DA96EA92780} = {40665AB6-07DB-471A-9F8D-6DA96EA92780}
+		{D005488E-5F0A-41BB-A87B-1DACB524F7F5} = {D005488E-5F0A-41BB-A87B-1DACB524F7F5}
+	EndProjectSection
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{92C81B6B-9003-435A-9803-E319D289B756}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{92C81B6B-9003-435A-9803-E319D289B756}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{92C81B6B-9003-435A-9803-E319D289B756}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{92C81B6B-9003-435A-9803-E319D289B756}.Release|Any CPU.Build.0 = Release|Any CPU
+		{D005488E-5F0A-41BB-A87B-1DACB524F7F5}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{D005488E-5F0A-41BB-A87B-1DACB524F7F5}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{D005488E-5F0A-41BB-A87B-1DACB524F7F5}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{D005488E-5F0A-41BB-A87B-1DACB524F7F5}.Release|Any CPU.Build.0 = Release|Any CPU
+		{40665AB6-07DB-471A-9F8D-6DA96EA92780}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{40665AB6-07DB-471A-9F8D-6DA96EA92780}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{40665AB6-07DB-471A-9F8D-6DA96EA92780}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{40665AB6-07DB-471A-9F8D-6DA96EA92780}.Release|Any CPU.Build.0 = Release|Any CPU
+		{AE1BC520-F49E-4DD0-AF13-3DDF458A58A5}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{AE1BC520-F49E-4DD0-AF13-3DDF458A58A5}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{AE1BC520-F49E-4DD0-AF13-3DDF458A58A5}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{AE1BC520-F49E-4DD0-AF13-3DDF458A58A5}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {2D7BBA38-CF78-4B75-995D-02779E75C5D6}
+	EndGlobalSection
+EndGlobal
