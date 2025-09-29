@@ -8,9 +8,16 @@
 
   <ItemGroup>
     <Folder Include="Mapper\" />
-    <Folder Include="Models\" />
     <Folder Include="Validations\" />
-    <Folder Include="Services\" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <PackageReference Include="AutoMapper" Version="15.0.1" />
+    <PackageReference Include="Microsoft.EntityFrameworkCore" Version="9.0.9" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\Elmo.Infrastructure\Elmo.Infrastructure.csproj" />
   </ItemGroup>
 
 </Project>
