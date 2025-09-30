@@ -1,9 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.ComponentModel.DataAnnotations.Schema;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿using System.ComponentModel.DataAnnotations.Schema;
 
 namespace Elmo.Domain.Entities
 {
@@ -15,13 +10,13 @@ namespace Elmo.Domain.Entities
         [ForeignKey(nameof(Team))]
         public int TeamId { get; set; }
 
-        public virtual Team? Team {get; set;}
+        public virtual Team? Team { get; set; }
 
         [ForeignKey(nameof(VacationPackage))]
         public int VacationPackageId { get; set; }
 
         public virtual VacationPackage? VacationPackage { get; set; }
 
-        public virtual List<Vacation>? Vacations { get; set; } = new List<Vacation>();
+        public virtual List<Vacation> Vacations { get; set; } = new List<Vacation>();
     }
 }

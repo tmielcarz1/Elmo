@@ -1,14 +1,8 @@
 ﻿using AutoMapper;
-using AutoMapper.QueryableExtensions;
 using Elmo.Application.Models.Exercise2;
 using Elmo.Infrastructure.Common.Models;
 using Elmo.Infrastructure.Context;
 using Microsoft.EntityFrameworkCore;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace Elmo.Application.Services.Exercise2
 {
@@ -115,7 +109,7 @@ namespace Elmo.Application.Services.Exercise2
                     Teams = _mapper.Map<List<GetTeamsWithoutVacationIn2019Team>>(teams)
                 };
             }
-            catch(Exception ex)
+            catch (Exception ex)
             {
                 state.AddError($"Błąd {ex.Message}");
                 state.StatusCode = StatusCode.BadRequest;

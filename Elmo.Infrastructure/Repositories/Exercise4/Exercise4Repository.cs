@@ -1,11 +1,6 @@
 ﻿using Elmo.Domain.Entities;
 using Elmo.Infrastructure.Context;
 using Microsoft.EntityFrameworkCore;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace Elmo.Infrastructure.Repositories.Exercise4
 {

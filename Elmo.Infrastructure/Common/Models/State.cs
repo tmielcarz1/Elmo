@@ -1,29 +1,10 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Text.Json.Serialization;
-using System.Threading.Tasks;
+﻿using System.Text.Json.Serialization;
 
 namespace Elmo.Infrastructure.Common.Models
 {
     public class State
     {
         #region Properties
-
-        /// <summary>
-        /// Is not valid ?
-        /// </summary>
-        [JsonIgnore]
-        public bool IsNotValid => Errors.Any();
-
-        /// <summary>
-        /// Is valid?
-        /// </summary>
-        [JsonPropertyName("result")]
-        [JsonIgnore]
-        public bool IsValid => !IsNotValid;
-
 
         /// <summary>
         /// Returned object
@@ -38,12 +19,7 @@ namespace Elmo.Infrastructure.Common.Models
         /// Errors
         /// </summary>
         [JsonPropertyName("errors_debug")]
-        public List<string> Errors { get; set; }
-        /// <summary>
-        /// Errors Dictionary
-        /// </summary>
-        [JsonIgnore]
-        public Dictionary<string, List<string>> ErrorsDictionary { get; set; }
+        public List<string> Errors { get; set; } = new List<string>();
 
         #endregion Properties
 
@@ -55,17 +31,14 @@ namespace Elmo.Infrastructure.Common.Models
         public State()
         {
             Errors = new List<string>();
-            ErrorsDictionary = new Dictionary<string, List<string>>();
         }
-
 
         /// <summary>
         /// State constructor
         /// </summary>
-        public State(Dictionary<string, List<string>> errorsDictionary)
+        public State(List<string> errors)
         {
-            Errors = errorsDictionary.Values.SelectMany(x => x).ToList();
-            ErrorsDictionary = errorsDictionary;
+            Errors = errors;
         }
 
         #endregion Constructors
@@ -97,31 +70,6 @@ namespace Elmo.Infrastructure.Common.Models
             if (!Errors.Contains(err))
             {
                 Errors.Add(err);
-                AddToDictionary("", err);
-            }
-        }
-
-        /// <summary>
-        /// Add error dictonary
-        /// </summary>
-        /// <param name="err"></param>
-        public void AddError(string key, string err)
-        {
-            AddToDictionary(key, err);
-
-            if (!Errors.Contains(err))
-                Errors.Add(err);
-        }
-
-        private void AddToDictionary(string key, string err)
-        {
-            if (ErrorsDictionary.ContainsKey(key))
-            {
-                ErrorsDictionary[key].Add(err);
-            }
-            else
-            {
-                ErrorsDictionary.Add(key, new List<string>() { err });
             }
         }
 
@@ -157,27 +105,9 @@ namespace Elmo.Infrastructure.Common.Models
         #endregion
     }
 
-
-
-
     public class State<TResult>
     {
         #region Properties
-
-
-        /// <summary>
-        /// Is not valid ?
-        /// </summary>
-        [JsonIgnore]
-        public bool IsNotValid => Errors.Any();
-
-        /// <summary>
-        /// Is valid?
-        /// </summary>
-        [JsonPropertyName("result")]
-        [JsonIgnore]
-        public bool IsValid => !IsNotValid;
-
 
         /// <summary>
         /// Returned object
@@ -194,14 +124,27 @@ namespace Elmo.Infrastructure.Common.Models
         [JsonPropertyName("errors_debug")]
         public List<string> Errors { get; set; } = new List<string>();
 
-        /// <summary>
-        /// Errors Dictionary
-        /// </summary>
-        [JsonIgnore]
-        public Dictionary<string, List<string>> ErrorsDictionary { get; set; } = new Dictionary<string, List<string>>();
-
-
         #endregion Properties
+
+        #region Constructors
+
+        /// <summary>
+        /// State constructor
+        /// </summary>
+        public State()
+        {
+            Errors = new List<string>();
+        }
+
+        /// <summary>
+        /// State constructor
+        /// </summary>
+        public State(List<string> errors)
+        {
+            Errors = errors;
+        }
+
+        #endregion Constructors
 
         #region Exception methods
 
@@ -230,50 +173,17 @@ namespace Elmo.Infrastructure.Common.Models
             if (!Errors.Contains(err))
             {
                 Errors.Add(err);
-                AddToDictionary("", err);
             }
         }
 
-        /// <summary>
-        /// Add error dictonary
-        /// </summary>
-        /// <param name="err"></param>
-        public void AddError(string key, string err)
-        {
-            AddToDictionary(key, err);
-
-            if (!Errors.Contains(err))
-                Errors.Add(err);
-        }
-
-        private void AddToDictionary(string key, string err)
-        {
-            if (ErrorsDictionary.ContainsKey(key))
-            {
-                ErrorsDictionary[key].Add(err);
-            }
-            else
-            {
-                ErrorsDictionary.Add(key, new List<string>() { err });
-            }
-        }
         /// <summary>
         /// Add errors
         /// </summary>
-        /// <param name="err"></param>
+        /// <param name="errs"></param>
         public void AddErrors(List<string> errs)
         {
             Errors.AddRange(errs);
-            if (ErrorsDictionary.ContainsKey(""))
-            {
-                ErrorsDictionary[""].AddRange(errs);
-            }
-            else
-            {
-                ErrorsDictionary.Add("", new List<string>(errs));
-            }
         }
-
 
         #endregion Exception methods
 

@@ -1,17 +1,10 @@
-﻿using Elmo.Application.Mapper;
-using Elmo.Application.Services.Exercise1;
+﻿using Elmo.Application.Services.Exercise1;
 using Elmo.Application.Services.Exercise2;
 using Elmo.Application.Services.Exercise3;
 using Elmo.Application.Services.Exercise4;
 using Elmo.Infrastructure.Context;
 using Elmo.Infrastructure.Repositories.Exercise4;
-using Microsoft.AspNetCore.Authorization;
-using Microsoft.AspNetCore.Identity;
-using Microsoft.AspNetCore.Mvc.Controllers;
 using Microsoft.EntityFrameworkCore;
-using Microsoft.Extensions.DependencyInjection;
-using Microsoft.OpenApi.Models;
-using System.Reflection;
 
 namespace Elmo.WebApi.Extensions
 {
@@ -26,7 +19,8 @@ namespace Elmo.WebApi.Extensions
             services.AddHttpClient();
 
             //automapper:
-            services.AddAutoMapper(cfg => {
+            services.AddAutoMapper(cfg =>
+            {
                 cfg.AllowNullCollections = false;
                 cfg.AllowNullDestinationValues = true;
             }, AppDomain.CurrentDomain.GetAssemblies());
@@ -45,7 +39,8 @@ namespace Elmo.WebApi.Extensions
 
 
             //automapper:
-            services.AddAutoMapper(cfg => {
+            services.AddAutoMapper(cfg =>
+            {
                 cfg.AllowNullCollections = false;
                 cfg.AllowNullDestinationValues = true;
             }, AppDomain.CurrentDomain.GetAssemblies());

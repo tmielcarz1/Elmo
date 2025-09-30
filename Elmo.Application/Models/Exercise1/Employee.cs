@@ -1,10 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-
-namespace Elmo.Application.Models.Exercise1
+﻿namespace Elmo.Application.Models.Exercise1
 {
     public class Employee
     {

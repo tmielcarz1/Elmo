@@ -45,7 +45,7 @@ namespace Elmo.Infrastructure.Migrations
 
                     b.HasIndex("VacationPackageId");
 
-                    b.ToTable("Employees");
+                    b.ToTable("Employees", (string)null);
                 });
 
             modelBuilder.Entity("Elmo.Domain.Entities.Team", b =>
@@ -61,7 +61,7 @@ namespace Elmo.Infrastructure.Migrations
 
                     b.HasKey("Id");
 
-                    b.ToTable("Teams");
+                    b.ToTable("Teams", (string)null);
                 });
 
             modelBuilder.Entity("Elmo.Domain.Entities.Vacation", b =>
@@ -91,7 +91,7 @@ namespace Elmo.Infrastructure.Migrations
 
                     b.HasIndex("EmployeeId");
 
-                    b.ToTable("Vacations");
+                    b.ToTable("Vacations", (string)null);
                 });
 
             modelBuilder.Entity("Elmo.Domain.Entities.VacationPackage", b =>
@@ -113,7 +113,7 @@ namespace Elmo.Infrastructure.Migrations
 
                     b.HasKey("Id");
 
-                    b.ToTable("VacationPackages");
+                    b.ToTable("VacationPackages", (string)null);
                 });
 
             modelBuilder.Entity("Elmo.Domain.Entities.Employee", b =>

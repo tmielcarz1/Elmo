@@ -1,9 +1,4 @@
 ﻿using Elmo.Domain.Entities;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace Elmo.Infrastructure.Context
 {
@@ -59,7 +54,7 @@ namespace Elmo.Infrastructure.Context
                 new Vacation { EmployeeId = employee3.Id, DateSince = new DateTime(2019, 07, 01), DateUntil = new DateTime(2019, 07, 03), NumberOfHours = 8, IsPartialVacation = false },
                 new Vacation { EmployeeId = employee4.Id, DateSince = new DateTime(DateTime.Now.Year + 1, 01, 01), DateUntil = new DateTime(DateTime.Now.Year + 1, 01, 05), NumberOfHours = 8, IsPartialVacation = false },
                 new Vacation { EmployeeId = employee5.Id, DateSince = new DateTime(2024, 02, 01), DateUntil = new DateTime(2024, 02, 03), NumberOfHours = 8, IsPartialVacation = false },
-                new Vacation { EmployeeId = employee2.Id, DateSince = new DateTime(DateTime.Now.Year, 04, 10), DateUntil = new DateTime(DateTime.Now.Year, 04, 10), NumberOfHours = 4, IsPartialVacation = true }, 
+                new Vacation { EmployeeId = employee2.Id, DateSince = new DateTime(DateTime.Now.Year, 04, 10), DateUntil = new DateTime(DateTime.Now.Year, 04, 10), NumberOfHours = 4, IsPartialVacation = true },
                 new Vacation { EmployeeId = employee3.Id, DateSince = new DateTime(DateTime.Now.Year, 05, 15), DateUntil = new DateTime(DateTime.Now.Year, 05, 15), NumberOfHours = 2, IsPartialVacation = true }
 
             };

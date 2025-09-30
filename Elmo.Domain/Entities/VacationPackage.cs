@@ -1,10 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-
-namespace Elmo.Domain.Entities
+﻿namespace Elmo.Domain.Entities
 {
     public class VacationPackage
     {
