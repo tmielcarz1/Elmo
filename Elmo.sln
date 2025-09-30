@@ -1,7 +1,7 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 17
-VisualStudioVersion = 17.14.36518.9 d17.14
+VisualStudioVersion = 17.14.36518.9
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Elmo.WebApi", "Elmo\Elmo.WebApi.csproj", "{92C81B6B-9003-435A-9803-E319D289B756}"
 	ProjectSection(ProjectDependencies) = postProject
@@ -20,6 +20,12 @@ EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Elmo.Application", "Elmo.Application\Elmo.Application.csproj", "{AE1BC520-F49E-4DD0-AF13-3DDF458A58A5}"
 	ProjectSection(ProjectDependencies) = postProject
 		{40665AB6-07DB-471A-9F8D-6DA96EA92780} = {40665AB6-07DB-471A-9F8D-6DA96EA92780}
+		{D005488E-5F0A-41BB-A87B-1DACB524F7F5} = {D005488E-5F0A-41BB-A87B-1DACB524F7F5}
+	EndProjectSection
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Elmo.Test", "Elmo.Test\Elmo.Test.csproj", "{4C326390-A88E-4AB1-AB2A-7F8B092522F6}"
+	ProjectSection(ProjectDependencies) = postProject
+		{AE1BC520-F49E-4DD0-AF13-3DDF458A58A5} = {AE1BC520-F49E-4DD0-AF13-3DDF458A58A5}
 		{D005488E-5F0A-41BB-A87B-1DACB524F7F5} = {D005488E-5F0A-41BB-A87B-1DACB524F7F5}
 	EndProjectSection
 EndProject
@@ -45,6 +51,10 @@ Global
 		{AE1BC520-F49E-4DD0-AF13-3DDF458A58A5}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{AE1BC520-F49E-4DD0-AF13-3DDF458A58A5}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{AE1BC520-F49E-4DD0-AF13-3DDF458A58A5}.Release|Any CPU.Build.0 = Release|Any CPU
+		{4C326390-A88E-4AB1-AB2A-7F8B092522F6}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{4C326390-A88E-4AB1-AB2A-7F8B092522F6}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{4C326390-A88E-4AB1-AB2A-7F8B092522F6}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{4C326390-A88E-4AB1-AB2A-7F8B092522F6}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

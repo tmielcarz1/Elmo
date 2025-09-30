@@ -35,7 +35,7 @@ namespace Elmo.Infrastructure.Context
             await _context.SaveChangesAsync();
 
 
-            var package1 = new VacationPackage { Name = "2025 rok", GrantedDays = 26, Year = 2023 };
+            var package1 = new VacationPackage { Name = "2025 rok", GrantedDays = 26, Year = 2025 };
             var package2 = new VacationPackage { Name = "2019 rok", GrantedDays = 26, Year = 2019 };
 
             _context.VacationPackages.AddRange(package1, package2);

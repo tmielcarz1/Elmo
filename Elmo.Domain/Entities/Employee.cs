@@ -22,6 +22,6 @@ namespace Elmo.Domain.Entities
 
         public virtual VacationPackage? VacationPackage { get; set; }
 
-        public virtual List<Vacation> Vacations { get; set; } = new List<Vacation>();
+        public virtual List<Vacation>? Vacations { get; set; } = new List<Vacation>();
     }
 }

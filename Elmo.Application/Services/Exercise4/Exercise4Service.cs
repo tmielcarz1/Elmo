@@ -1,42 +1,34 @@
 ﻿using AutoMapper;
-using Elmo.Application.Models.Exercise3;
 using Elmo.Domain.Entities;
 using Elmo.Infrastructure.Common.Models;
 using Elmo.Infrastructure.Context;
+using Elmo.Infrastructure.Repositories.Exercise4;
 using Microsoft.EntityFrameworkCore;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
-namespace Elmo.Application.Services.Exercise3
+namespace Elmo.Application.Services.Exercise4
 {
-    public class Exercise3Service : IExercise3Service
+    public class Exercise4Service : IExercise4Service
     {
-        private readonly ElmoDbContext _context;
+
+        private readonly IExercise4Repository _repository;
         private readonly IMapper _mapper;
 
-        public Exercise3Service(ElmoDbContext context, IMapper mapper)
+        public Exercise4Service(IExercise4Repository repository, IMapper mapper)
         {
-            _context = context;
+            _repository = repository;
             _mapper = mapper;
         }
 
 
-        public async Task<State<GetEmployeeRemainingVacationThisYearResponse>> GetEmployeeRemainingVacationThisYearResponse(int employeeId)
+        public async Task<State<bool>> IsEmployeeCanRequestVacation(int employeeId)
         {
-            var state = new State<GetEmployeeRemainingVacationThisYearResponse>();
+            var state = new State<bool>();
             
             try
             {
-                var employee = new Employee();
-                var vacations = new List<Vacation>();
                 var vacationPackage = new VacationPackage();
-                employee = await _context.Employees
-                    .Include(e => e.VacationPackage)
-                    .Include(e => e.Vacations)
-                    .FirstOrDefaultAsync(e => e.Id == employeeId);
+                var vacations = new List<Vacation>();
+                var employee = await _repository.GetEmployeeById(employeeId);
 
                 if (employee == null)
                 {
@@ -46,8 +38,7 @@ namespace Elmo.Application.Services.Exercise3
                 }
                 else if (employee.VacationPackage?.Year != DateTime.Now.Year || employee.VacationPackage is null)
                 {
-                    state.AddError($"Pracownik nie ma puli dni wolnych w tym roku");
-                    state.StatusCode = StatusCode.BadRequest;
+                    state.StateObject = false;
                     return state;
                 }
 
@@ -58,22 +49,7 @@ namespace Elmo.Application.Services.Exercise3
                     .Where(v => v.DateUntil >= new DateTime(DateTime.Now.Year, 1, 1) && v.DateSince <= new DateTime(DateTime.Now.Year, 12, 31))
                     .ToList();
 
-
-                if (vacations == null)
-                {
-                    state.AddError($"Pracownik nie zużytych dni wolnych w tym roku");
-                    state.StatusCode = StatusCode.BadRequest;
-                    return state;
-                }
-
-                int freeDays = CountFreeDaysForEmployee(employee, vacations, vacationPackage);
-
-                state.StateObject = new GetEmployeeRemainingVacationThisYearResponse()
-                {
-                    Id = employee.Id,
-                    Name = employee.Name,
-                    FreeDays = freeDays,
-                };
+                state.StateObject = IfEmployeeCanRequestVacation(employee, vacations, vacationPackage);
             }
             catch (Exception ex)
             {
@@ -84,7 +60,7 @@ namespace Elmo.Application.Services.Exercise3
             return state;
         }
 
-        public int CountFreeDaysForEmployee(Employee employee, List<Vacation> vacations, VacationPackage vacationPackage)
+        public bool IfEmployeeCanRequestVacation(Employee employee, List<Vacation> vacations, VacationPackage vacationPackage)
         {
             double usedDays = 0;
 
@@ -100,7 +76,7 @@ namespace Elmo.Application.Services.Exercise3
             }
             double freeDays = vacationPackage.GrantedDays - usedDays;
 
-            return freeDays > 0 ? (int)Math.Floor(freeDays) : 0;
+            return freeDays > 0 ? true : false;
         }
 
 
